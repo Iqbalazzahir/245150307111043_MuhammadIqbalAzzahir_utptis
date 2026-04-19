@@ -1,0 +1,237 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Pokemon Card API",
+        "description": "API untuk mengelola kartu Pokemon",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://127.0.0.1:8000",
+            "description": "Local Server"
+        }
+    ],
+    "paths": {
+        "/api/items": {
+            "get": {
+                "tags": [
+                    "Items"
+                ],
+                "summary": "Get all items",
+                "operationId": "2cbf07eb95d033f8775c36424ac8fa06",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Items"
+                ],
+                "summary": "Create a new item",
+                "operationId": "af37857663e6805dd367a55f374c9ee1",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "rarity": {
+                                        "type": "string",
+                                        "enum": [
+                                            "S",
+                                            "A",
+                                            "B",
+                                            "C",
+                                            "E"
+                                        ]
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Item created"
+                    }
+                }
+            }
+        },
+        "/api/items/{id}": {
+            "get": {
+                "tags": [
+                    "Items"
+                ],
+                "summary": "Get item by ID",
+                "operationId": "7f1ffbd9fa2b704c61ebcccb636ebb27",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Item not found"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Items"
+                ],
+                "summary": "Update an item",
+                "operationId": "4ac9fb55d8a18bd1cba3a29d84f9fd4d",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "rarity": {
+                                        "type": "string",
+                                        "enum": [
+                                            "S",
+                                            "A",
+                                            "B",
+                                            "C",
+                                            "E"
+                                        ]
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Item updated"
+                    },
+                    "404": {
+                        "description": "Item not found"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Items"
+                ],
+                "summary": "Delete an item",
+                "operationId": "0f88b60b73861d5414f8ea2fedd3dfc3",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Item deleted"
+                    },
+                    "404": {
+                        "description": "Item not found"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Items"
+                ],
+                "summary": "Partially update an item",
+                "operationId": "8171e1e0bd396fd89495538eb21a8869",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": false,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "rarity": {
+                                        "type": "string",
+                                        "enum": [
+                                            "S",
+                                            "A",
+                                            "B",
+                                            "C",
+                                            "E"
+                                        ]
+                                    },
+                                    "price": {
+                                        "type": "number",
+                                        "format": "float"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Item updated"
+                    },
+                    "404": {
+                        "description": "Item not found"
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Items",
+            "description": "Operations about Pokemon cards"
+        }
+    ]
+}
